@@ -1,0 +1,4 @@
+inc_signals <-
+structure(logical(0), class = c("POSIXct", "POSIXt"))
+out_signals <-
+structure(logical(0), class = c("POSIXct", "POSIXt"))
