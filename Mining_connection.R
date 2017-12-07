@@ -58,8 +58,8 @@ ReceiveRawMsg <- function(con) {
 Authorize <- function(con, login, pwd, stream_name)
 {
     # generate login message
-    login_msg <- Authentication.LoginRequest$new(login = "hsafaie", 
-                                                 enc_password = "3w7WN6ln ",
+    login_msg <- Authentication.LoginRequest$new(login = login, 
+                                                 enc_password = pwd,
                                                  stream_name = stream_name);
     # send login message
     message("Sending login message");
