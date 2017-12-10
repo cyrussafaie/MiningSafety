@@ -13,7 +13,7 @@ initial_timestamp <- Sys.time()     # start-of-program timestamp
 plot_timestamp <- initial_timestamp # we use plot_timestamp to draw the plot once in a second
 
 # parameters for solution
-dt <- 0.05
+dt <- 0.05 
 w <- 10 # experiment with window width to estimate intensity
 n <- 50 # experiment with number of observations of intensity in the model
 t0 <- ((n+w)*dt) # earliest time when regression can be fitted
@@ -34,7 +34,7 @@ eventRate_barrier <- 6 # when eventRate exceeds this barrier then we send the al
 # 
 
 new_event_handler <- function() {
-        time_threshold <- 75 
+        time_threshold <- 60 
         now <- Sys.time()
         if(incoming_signals_counter < 0.5){
                 initial_timestamp <<- now
@@ -57,11 +57,11 @@ new_event_handler <- function() {
                 
                 if(t > w)
                 {
-                        tSet <- c(t - t0 + dt, t)
-                        X <- eventMoments[!is.na(eventMoments)]
+                        tSet <- c(t - t0 + dt, t)								   
+                      X <- eventMoments[!is.na(eventMoments)]
                         eventsBeforeMoments <- findInterval(tSet, X)
                         intensity <- eventsBeforeMoments[2] - eventsBeforeMoments[1] #events number between "t-w" and "t"
-                        intensity <- intensity/(dt*w) # events per minute
+												                           intensity <- intensity/(dt*w) # events per minute
                         send_signal <- (intensity > eventRate_barrier) & (outgoing_signals_counter <= 0)
                 }
         
@@ -103,7 +103,7 @@ port <- 30004
 login <- "hsafaie@uchicago.edu"
 password <- "3w7WN6ln"
 stream_name <- "Mining"
-catch_handler_errors <- FALSE  # we recommend using TRUE during the test and FALSE during homework
+catch_handler_errors <- TRUE  # we recommend using TRUE during the test and FALSE during homework
 # make connection with your personal handler
 result <- Connect(host, port, login, password, stream_name, new_event_handler, catch_handler_errors)
 
