@@ -100,7 +100,7 @@ Draw <- function()
 # server options
 host <- "datastream.ilykei.com"
 port <- 30004
-login <- "hsafaie@uchicago.edu"
+login <- "MM"
 password <- "3w7WN6ln"
 stream_name <- "Mining"
 catch_handler_errors <- TRUE  # we recommend using TRUE during the test and FALSE during homework
